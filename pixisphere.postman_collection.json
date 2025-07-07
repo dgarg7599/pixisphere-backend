@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "fbcf902d-ac1b-4dd8-ac80-5482cd934d70",
+		"name": "pixisphere",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31495381",
+		"_collection_link": "https://interstellar-rocket-191834.postman.co/workspace/c381bb22-40f6-41f6-8117-2c81262d8aea/collection/31495381-fbcf902d-ac1b-4dd8-ac80-5482cd934d70?action=share&source=collection_link&creator=31495381"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"RohitStudio\",\r\n  \"email\": \"rohit@studio.com\",\r\n  \"phone\": \"9876543210\",\r\n  \"password\": \"Rohit12345678\",\r\n  \"role\": \"PARTNER\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8085/api/auth/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "Otp Verification",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"rohit@studio.com\",\r\n  \"otp\": \"321870\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8085/api/auth/verify-otp"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"rohit@studio.com\",\r\n  \"password\": \"Rohit12345678\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8085/api/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Partner Onboarding",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": " eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUEFSVE5FUiIsInVzZXJJZCI6NCwic3ViIjoicm9oaXRAc3R1ZGlvLmNvbSIsImlhdCI6MTc1MTkwNDQwMywiZXhwIjoxNzUxOTkwODAzfQ.Qj_G-bJzx3Mk5ZesR1x11NdrlaLEyRjCAtH9XZh5jIE"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Rohit\",\r\n  \"serviceCategory\": \"Wedding\",\r\n  \"city\": \"Delhi\",\r\n  \"aadharNumber\": \"1234-5678-9012\",\r\n  \"samplePortfolioUrls\": [\r\n    \"https://example.com/photo1.jpg\",\r\n    \"https://example.com/photo2.jpg\"\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8085/api/partner/onboarding"
+			},
+			"response": []
+		},
+		{
+			"name": "Partner Pending Verifications",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJ1c2VySWQiOjUsInN1YiI6ImlzaGFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTE5MDU0NTAsImV4cCI6MTc1MTk5MTg1MH0.CUfj7B0hcTSwtTcyNNQw4RdCC5ia_EUjFcMm3nPlAqw"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8085/api/admin/verifications"
+			},
+			"response": []
+		},
+		{
+			"name": "Approves/Rejects Partner",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJ1c2VySWQiOjUsInN1YiI6ImlzaGFAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTE5MDU0NTAsImV4cCI6MTc1MTk5MTg1MH0.CUfj7B0hcTSwtTcyNNQw4RdCC5ia_EUjFcMm3nPlAqw"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"approved\": true,\r\n  \"comment\": \"All documents verified\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8085/api/admin/verify/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Service Inquiry",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwidXNlcklkIjoyLCJzdWIiOiJjbGllbnRAcGl4aS5jb20iLCJpYXQiOjE3NTE5MDc4MDcsImV4cCI6MTc1MTk5NDIwN30.zJP9ZmPopfiWR_SqIexdsUabN_HC0WTlmWto3acUUvQ"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"category\": \"wedding\",\r\n  \"city\": \"Delhi\",\r\n  \"eventDate\": \"2025-08-15\",\r\n  \"budget\": 50000,\r\n  \"referenceImageUrl\": \"https://example.com/sample-wedding.jpg\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8085/api/client/inquiry"
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Assigned Inquiries",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUEFSVE5FUiIsInVzZXJJZCI6NSwic3ViIjoicGFydG5lcjJAcGl4aS5jb20iLCJpYXQiOjE3NTE5MDc5NzcsImV4cCI6MTc1MTk5NDM3N30.2cKzpLbixdsIMp6IhKaCcVjFvK6d2aphDT6kOlVg5q0"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8085/api/partner/leads"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Portfolio",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUEFSVE5FUiIsInVzZXJJZCI6MSwic3ViIjoicGFydG5lcjJAcGl4aS5jb20iLCJpYXQiOjE3NTE5MTI3NjMsImV4cCI6MTc1MTk5OTE2M30.yBXyGHewjL5g1AuExE6Q9KsYSD3I518zlfQheQlR3lY"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"imageUrl\": \"https://cdn.pixisphere.com/portfolio2.jpg\",\r\n  \"description\": \"Traditional wedding shoot\",\r\n  \"index\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8085/api/partner/portfolio/add"
+			},
+			"response": []
+		},
+		{
+			"name": "Get my portfolios",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUEFSVE5FUiIsInVzZXJJZCI6MSwic3ViIjoicGFydG5lcjJAcGl4aS5jb20iLCJpYXQiOjE3NTE5MTI0MzksImV4cCI6MTc1MTk5ODgzOX0.3Gvo-xVWPzBPGTdEQcxOoPYWFF-dIZHkNBmxlRRCWes"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8085/api/partner/portfolio/my"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Portfolio",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUEFSVE5FUiIsInVzZXJJZCI6MSwic3ViIjoicGFydG5lcjJAcGl4aS5jb20iLCJpYXQiOjE3NTE5MTI3NjMsImV4cCI6MTc1MTk5OTE2M30.yBXyGHewjL5g1AuExE6Q9KsYSD3I518zlfQheQlR3lY"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"imageUrl\": \"https://cdn.pixisphere.com/portfolio2.jpg\",\r\n  \"description\": \"Traditional Shoot\",\r\n  \"index\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8085/api/partner/portfolio/update/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Portfolio",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUEFSVE5FUiIsInVzZXJJZCI6MSwic3ViIjoicGFydG5lcjJAcGl4aS5jb20iLCJpYXQiOjE3NTE5MTI3NjMsImV4cCI6MTc1MTk5OTE2M30.yBXyGHewjL5g1AuExE6Q9KsYSD3I518zlfQheQlR3lY"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8085/api/partner/portfolio/delete/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Stats by Admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJ1c2VySWQiOjIsInN1YiI6ImFkbWluQHBpeGkuY29tIiwiaWF0IjoxNzUxOTE0MzM1LCJleHAiOjE3NTIwMDA3MzV9.G_fPzcZDuExU2oo173qOy8BYiZJWgxts-aNBxvrKbvw"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8085/api/admin/stats"
+			},
+			"response": []
+		}
+	]
+}
