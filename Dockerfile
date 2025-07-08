@@ -1,14 +1,20 @@
-# Use official OpenJDK 21 image as base
-FROM eclipse-temurin:21-jdk-alpine
+# Stage 1: Build with Maven
+FROM maven:3.8.7-eclipse-temurin-17 as builder
 
-# Set working directory
 WORKDIR /app
 
-# Copy the built jar file from target folder
-COPY target/pixisphere-backend-0.0.1-SNAPSHOT.jar app.jar
+COPY pom.xml .
+COPY src ./src
 
-# Expose port (same as your Spring Boot server port)
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run the app
+FROM eclipse-temurin:17-jre
+
+WORKDIR /app
+
+COPY --from=builder /app/target/pixisphere-backend-0.0.1-SNAPSHOT.jar app.jar
+
 EXPOSE 8085
 
-# Run the jar file
 ENTRYPOINT ["java", "-jar", "app.jar"]
