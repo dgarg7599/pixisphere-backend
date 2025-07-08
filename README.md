@@ -48,7 +48,7 @@ Pixisphere is a full-stack, role-based photography service marketplace that conn
 
 | Layer      | Technology                  |
 |------------|-----------------------------|
-| Language   | Java 21                     |
+| Language   | Java 17                     |
 | Framework  | Spring Boot 3               |
 | Database   | MySQL                       |
 | Security   | Spring Security + JWT       |
